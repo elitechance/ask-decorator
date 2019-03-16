@@ -1,13 +1,13 @@
 {
   "name": "ask-decorator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Alexa ask-sdk Typescript Decorator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "npm run build && cd dist && npm publish && cd -",
     "deploy:local": "npm run build && cd dist && npm link && cd -",
-    "build": "rm -rf dist && tsc && cp package*.json dist",
+    "build": "rm -rf dist && tsc && cp package*.json *.md dist",
     "start": "tsc -w"
   },
   "repository": {

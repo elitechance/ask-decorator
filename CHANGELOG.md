@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.1
+
+- Add readme and changelog to npm
+
 ## 1.0.0
 
 - Initial import
