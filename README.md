@@ -18,8 +18,6 @@ import {
 import { HandlerInput } from 'ask-sdk-core';
 
 export class AlexaLambda {
-  private _var = 1;
-
   /**
    * Lambda event
    */
