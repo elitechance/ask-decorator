@@ -158,15 +158,15 @@ export class AskDecorator {
     }
   }
 
-  private requestInterceptorHandler(handlerInput: HandlerInput) {
+  private async requestInterceptorHandler(handlerInput: HandlerInput) {
     for (const interceptor of this.requestInterceptors) {
-      this.getTargetInstance()[interceptor](handlerInput);
+      await this.getTargetInstance()[interceptor](handlerInput);
     }
   }
 
-  private responseInterceptorHandler(handlerInput: HandlerInput) {
+  private async responseInterceptorHandler(handlerInput: HandlerInput) {
     for (const interceptor of this.responseInterceptors) {
-      this.getTargetInstance()[interceptor](handlerInput);
+      await this.getTargetInstance()[interceptor](handlerInput);
     }
   }
 

@@ -1,14 +1,15 @@
 {
   "name": "ask-decorator",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Alexa ask-sdk Typescript Decorator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "deploy": "npm run build && cd dist && npm publish && cd -",
     "deploy:local": "npm run build && cd dist && npm link && cd -",
     "build": "rm -rf dist && tsc && cp package*.json *.md dist",
-    "start": "tsc -w"
+    "start": "tsc -w",
+    "coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -26,11 +27,13 @@
   },
   "homepage": "https://github.com/elitechance/ask-decorator#readme",
   "devDependencies": {
-    "@types/node": "^11.11.3",
-    "typescript": "^3.3.3333"
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^5.0.5",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
   },
   "dependencies": {
-    "ask-sdk-core": "^2.5.1",
-    "ask-sdk-model": "^1.13.0"
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.86.0"
   }
 }

@@ -2,6 +2,8 @@
 
 Typescript decorators for ASK SDK v2 for Node.js
 
+> **Note:** This library targets classic Alexa custom skills built on the [Alexa Skills Kit](https://developer.amazon.com/docs/alexa-skills-kit-sdk-for-nodejs/overview.html). It does not support Alexa+, which uses the [Alexa AI SDKs](https://developer.amazon.com/en-US/blogs/alexa/alexa-skills-kit/2025/02/new-alexa-announce-blog) instead. Existing custom skills keep working on original Alexa.
+
 ## Sample Usage
 
 ```typescript
@@ -13,7 +15,10 @@ import {
   DefaultIntentHandler,
   Event,
   Callback,
-  Context
+  Context,
+  PostConstructor,
+  RequestInterceptor,
+  ResponseInterceptor
 } from 'ask-decorator';
 import { HandlerInput } from 'ask-sdk-core';
 
@@ -89,32 +94,27 @@ export class AlexaLambda {
     return handler.responseBuilder.speak('default handler').getResponse();
   }
 
+  /**
+   * Interceptors run in order and may be async; each one is awaited
+   */
   @ResponseInterceptor()
-  responseInterceptor(handler: HandlerInput) {
-    return new Promise((resolve, reject) => {
-      console.log('response interceptor');
-    });
+  async responseInterceptor(handler: HandlerInput) {
+    console.log('response interceptor');
   }
 
   @ResponseInterceptor()
-  responseInterceptor2(handler: HandlerInput) {
-    return new Promise((resolve, reject) => {
-      console.log('response interceptor 2');
-    });
+  async responseInterceptor2(handler: HandlerInput) {
+    console.log('response interceptor 2');
   }
 
   @RequestInterceptor()
-  requestInterceptor(handler: HandlerInput) {
-    return new Promise((resolve, reject) => {
-      console.log('request interceptor');
-    });
+  async requestInterceptor(handler: HandlerInput) {
+    console.log('request interceptor');
   }
 
   @RequestInterceptor()
-  requestInterceptor2(handler: HandlerInput) {
-    return new Promise((resolve, reject) => {
-      console.log('request interceptor 2');
-    });
+  async requestInterceptor2(handler: HandlerInput) {
+    console.log('request interceptor 2');
   }
 }
 
